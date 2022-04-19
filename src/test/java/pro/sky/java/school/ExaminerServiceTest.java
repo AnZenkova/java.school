@@ -39,7 +39,6 @@ public class ExaminerServiceTest {
         questions.add(question);
 
         Mockito.when(javaQuestionService.getRandomQuestion()).thenReturn(question);
-
         assertEquals(questions, examinerService.getQuestions(0));
     }
 }
