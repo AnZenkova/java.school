@@ -1,7 +1,7 @@
 package pro.sky.java.school.ServiceImpl;
 
 import org.springframework.stereotype.Repository;
-import pro.sky.java.school.Service.QuestionService;
+import pro.sky.java.school.service.QuestionService;
 import pro.sky.java.school.data.Question;
 
 import java.util.ArrayList;

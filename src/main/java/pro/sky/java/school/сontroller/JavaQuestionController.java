@@ -1,10 +1,12 @@
-package pro.sky.java.school.Controller;
+package pro.sky.java.school.сontroller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.school.Service.QuestionService;
+import pro.sky.java.school.service.QuestionService;
 import pro.sky.java.school.data.Question;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/exam/java")
@@ -30,8 +32,8 @@ public class JavaQuestionController {
     }
 
     @RequestMapping("")
-    public String addQuestion() {
-        return String.valueOf(questionService.getAll());
+    public Collection<Question> getQuestions() {
+        return questionService.getAll();
     }
 }
 

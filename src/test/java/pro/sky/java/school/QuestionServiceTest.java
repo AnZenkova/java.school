@@ -2,10 +2,7 @@ package pro.sky.java.school;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import pro.sky.java.school.Service.QuestionService;
+import pro.sky.java.school.service.QuestionService;
 import pro.sky.java.school.ServiceImpl.JavaQuestionService;
 import pro.sky.java.school.data.Question;
 
@@ -27,11 +24,9 @@ public class QuestionServiceTest {
     private Question question8;
     private Question question9;
     private Question question10;
-    @Mock
     private JavaQuestionService javaQuestionService;
 
-    @InjectMocks
-    private QuestionService questionService = javaQuestionService;
+    private QuestionService questionService = new JavaQuestionService();
 
     @BeforeEach
     private void setUp() {
@@ -137,14 +132,5 @@ public class QuestionServiceTest {
 
         assertEquals(expected, actual);
         assertThrows(RuntimeException.class, null);
-    }
-
-    @Test
-    public void getRandomQuestion() {
-
-        Mockito.when(questionService.getRandomQuestion()).thenReturn(question1);
-        Question question = questionService.getRandomQuestion();
-
-        assertEquals(question, question1);
     }
 }

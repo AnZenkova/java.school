@@ -1,4 +1,4 @@
-package pro.sky.java.school.Service;
+package pro.sky.java.school.service;
 
 import pro.sky.java.school.data.Question;
 
