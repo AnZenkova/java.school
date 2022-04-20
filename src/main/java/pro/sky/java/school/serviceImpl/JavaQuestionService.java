@@ -1,6 +1,8 @@
 package pro.sky.java.school.serviceImpl;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import pro.sky.java.school.service.QuestionService;
 import pro.sky.java.school.data.Question;
 
@@ -9,7 +11,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
+@Service
+@Component("Java")
 public class JavaQuestionService implements QuestionService {
 
     Map<Integer, Question> javaQuestion = new HashMap<>(Map.of(

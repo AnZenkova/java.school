@@ -4,19 +4,19 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.java.school.service.QuestionService;
 import pro.sky.java.school.data.Question;
+import pro.sky.java.school.service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam/java")
-public class JavaQuestionController {
+@RequestMapping("/exam/math")
+public class MathQuestionController {
 
-    @Qualifier("Java")
+    @Qualifier("Math")
     private QuestionService questionService;
 
-    public JavaQuestionController(@Qualifier("Java") QuestionService questionService) {
+    public MathQuestionController(@Qualifier("Math") QuestionService questionService) {
         this.questionService = questionService;
     }
 
@@ -35,7 +35,6 @@ public class JavaQuestionController {
 
     @RequestMapping("")
     public Collection<Question> getQuestions() {
-        return questionService.getAll();
-    }
+            return questionService.getAll();
+        }
 }
-
