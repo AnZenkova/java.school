@@ -1,47 +1,37 @@
 package pro.sky.java.school;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.java.school.service.QuestionService;
-import pro.sky.java.school.ServiceImpl.JavaQuestionService;
+import pro.sky.java.school.serviceImpl.JavaQuestionService;
 import pro.sky.java.school.data.Question;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
 public class QuestionServiceTest {
 
-    private Question question1;
-    private Question question2;
-    private Question question3;
-    private Question question4;
-    private Question question5;
-    private Question question6;
-    private Question question7;
-    private Question question8;
-    private Question question9;
-    private Question question10;
-    private JavaQuestionService javaQuestionService;
+    private Question question1 = new Question("Что такое переменная?", "Переменная — это ячейка в памяти компьютера, которой можно присвоить имя и в которой можно хранить данные.");
+    private Question question2 = new Question("Какого типа переменные в джава бывают?","Целочисленные, вещественные, логические и символьные.");
+    private Question question3 = new Question("Что означает инициализация?","Инициализация — присваивание какого-то значения переменной.");
+    private Question question4 = new Question("Какие условные операторы вы знаете?","Конструкция if(), конструкция else, конструкция if-else, конструкция switch.");
+    private Question question5 = new Question("Что такое массив?","Массив — упорядоченная структура данных фиксированного размера.");
+    private Question question6 = new Question("Что такое метод?","Метод — блок кода, который выполняет определенную функцию и позволяет себя переиспользовать в нескольких местах без необходимости снова и снова писать один и тот же код.");
+    private Question question7 = new Question("Что такое статические методы?","Методы, которые принадлежат классу, не требуется иметь объект для его вызова.");
+    private Question question8 = new Question("Что такое нестатические методы?","Методы, которые принадлежат объекту. Для их использования нам нужно самим создать объект, инициализировать его и вызвать у этого объекта метод.");
+    private Question question9 = new Question("Что такое инкапсуляция?","Инкапсуляция в Java подразумевает разграничение доступа к данным и возможностям классов и объектов.");
+    private Question question10 = new Question("Что такое полиморфизм?","Данный принцип описывает механизм работы с разными типами объектов как с одним.");
 
+    @Mock
+    public JavaQuestionService javaQuestionService;
+    @InjectMocks
     private QuestionService questionService = new JavaQuestionService();
-
-    @BeforeEach
-    private void setUp() {
-        question1 = new Question("Что такое переменная?", "Переменная — это ячейка в памяти компьютера, которой можно присвоить имя и в которой можно хранить данные.");
-        question2 = new Question("Какого типа переменные в джава бывают?","Целочисленные, вещественные, логические и символьные.");
-        question3 = new Question("Что означает инициализация?","Инициализация — присваивание какого-то значения переменной.");
-        question4 = new Question("Какие условные операторы вы знаете?","Конструкция if(), конструкция else, конструкция if-else, конструкция switch.");
-        question5 = new Question("Что такое массив?","Массив — упорядоченная структура данных фиксированного размера.");
-        question6 = new Question("Что такое метод?","Метод — блок кода, который выполняет определенную функцию и позволяет себя переиспользовать в нескольких местах без необходимости снова и снова писать один и тот же код.");
-        question7 = new Question("Что такое статические методы?","Методы, которые принадлежат классу, не требуется иметь объект для его вызова.");
-        question8 = new Question("Что такое нестатические методы?","Методы, которые принадлежат объекту. Для их использования нам нужно самим создать объект, инициализировать его и вызвать у этого объекта метод.");
-        question9 = new Question("Что такое инкапсуляция?","Инкапсуляция в Java подразумевает разграничение доступа к данным и возможностям классов и объектов.");
-        question10 = new Question("Что такое полиморфизм?","Данный принцип описывает механизм работы с разными типами объектов как с одним.");
-
-    }
 
     private List<Question> addActualList() {
 
@@ -130,7 +120,17 @@ public class QuestionServiceTest {
         actual.remove(question11);
         actual.remove(question12);
 
+        assertThrows(RuntimeException.class, null); // тест на проверку ошибки в коде questionService.remove()
         assertEquals(expected, actual);
-        assertThrows(RuntimeException.class, null);
+    }
+
+    @Test
+    public void getRandomQuestion() {
+
+        questionService = javaQuestionService;
+
+        Mockito.when(javaQuestionService.getRandomQuestion()).thenReturn(question1);
+
+        assertEquals(questionService.getRandomQuestion(), question1);
     }
 }

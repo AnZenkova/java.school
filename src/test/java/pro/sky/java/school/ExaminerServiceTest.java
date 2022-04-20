@@ -6,21 +6,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pro.sky.java.school.ServiceImpl.JavaQuestionService;
-import pro.sky.java.school.service.ExaminerService;
-import pro.sky.java.school.ServiceImpl.ExaminerServiceImpl;
+import pro.sky.java.school.serviceImpl.JavaQuestionService;
+import pro.sky.java.school.serviceImpl.ExaminerServiceImpl;
 import pro.sky.java.school.data.Question;
 import pro.sky.java.school.service.QuestionService;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.anyInt;
 
 @ExtendWith(MockitoExtension.class)
 public class ExaminerServiceTest {

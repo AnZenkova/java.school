@@ -1,4 +1,4 @@
-package pro.sky.java.school.ServiceImpl;
+package pro.sky.java.school.serviceImpl;
 
 import org.springframework.stereotype.Repository;
 import pro.sky.java.school.service.QuestionService;
